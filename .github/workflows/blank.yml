@@ -19,8 +19,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: build docker image 
-        run: |
-          export CR_PAT=${{ secrets.DOCKER_PASSWORD }}}
-          echo $CR_PAT | docker login ghcr.io -u ${{ github.DOCKER_USER }} --password-stdin
-          docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:${{ github.sha }} .
+      - name: build docker image
+        uses: docker/login-action@v2
+        env:
+          TAG: ${{ github.sha }}
+        with:
+          registry: ghcr.io
+          username: ${{ github.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG .
+
+      - name: Deploy on production VM
+        uses: appleboy/ssh-action@v0.1.8
+        env:
+          TAG: ${{ github.sha }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          envs: TAG
+          script: |
+            echo "image tag to be release: $TAG"
+            echo "TODO: login, pull and run your docker image :)"
