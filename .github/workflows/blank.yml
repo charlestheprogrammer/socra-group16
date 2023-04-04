@@ -36,5 +36,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           envs: TAG
           script: |
-            echo "image tag to be release: $TAG"
-            echo "TODO: login, pull and run your docker image :)"
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USER }} --password-stdin
+            docker pull ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG
+            docker stop socarotte-frontend || true
+            docker rm socarotte-frontend || true
+            docker run -d --network web --name socarotte-frontend --label "traefik.http.routers.socarotte.rule=Host(\`group16.socra-sigl.fr\`)" --label "traefik.http.routers.socarotte.tls=true" --label "traefik.http.routers.socarotte.tls.certresolver=myresolver" --label "traefik.enable=true" --label "traefik.docker.network=web" ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG
