@@ -23,8 +23,7 @@ jobs:
         env:
           TAG: ${{ github.sha }}
         run: |
-          docker login -u ${{ github.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG .
+          echo ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Deploy on production VM
         uses: appleboy/ssh-action@v0.1.8
