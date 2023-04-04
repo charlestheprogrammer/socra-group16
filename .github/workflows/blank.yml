@@ -27,7 +27,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-        run: docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG .
+          script: docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG .
 
       - name: Deploy on production VM
         uses: appleboy/ssh-action@v0.1.8
