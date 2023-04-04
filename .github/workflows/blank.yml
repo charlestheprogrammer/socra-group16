@@ -23,7 +23,7 @@ jobs:
         env:
           TAG: ${{ github.sha }}
         run: |
-          docker login -u ${{ secret.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG .
 
       - name: Deploy on production VM
