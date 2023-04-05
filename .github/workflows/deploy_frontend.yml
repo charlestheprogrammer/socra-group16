@@ -10,6 +10,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to deploy'
+        required: true
+        default: 'latest'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,6 +25,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: build docker image
+        if: "${{ inputs.tag == '' }}"
         env:
           TAG: ${{ github.sha }}
         run: |
@@ -28,9 +34,26 @@ jobs:
           docker push ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG
 
       - name: Deploy on production VM
+        if: "${{ inputs.tag == '' }}"
         uses: appleboy/ssh-action@v0.1.8
         env:
           TAG: ${{ github.sha }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          envs: TAG
+          script: |
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USER }} --password-stdin
+            docker pull ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG
+            docker stop socarotte-frontend || true
+            docker rm socarotte-frontend || true
+            docker run -d --network web --name socarotte-frontend --label "traefik.http.routers.socarotte.rule=Host(\`group16.socra-sigl.fr\`)" --label "traefik.http.routers.socarotte.tls=true" --label "traefik.http.routers.socarotte.tls.certresolver=myresolver" --label "traefik.enable=true" --label "traefik.docker.network=web" ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG
+      - name: Revert on production VM
+        if: "${{ inputs.tag != '' }}"
+        uses: appleboy/ssh-action@v0.1.8
+        env:
+          TAG: ${{ inputs.tag }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
