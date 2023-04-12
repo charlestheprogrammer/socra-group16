@@ -1,0 +1,195 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+:root {
+  --default-text-color: #526066;
+}
+
+nav {
+  --menu-top-margin: 10px;
+  --menu-margin-left: 10px;
+}
+
+body {
+  color: var(--default-text-color);
+}
+
+.menu-horizontal {
+  width: 100%;
+  position: sticky;
+  background-color: white;
+  height: 2.5rem;
+  top: 0px;
+}
+
+nav > ul {
+  list-style-type: none;
+}
+
+.menu-horizontal > ul > li {
+  float: left;
+  margin-left: var(--menu-margin-left);
+}
+
+nav a {
+  display: block;
+  text-decoration: none;
+  color: var(--default-text-color);
+  border-bottom: 2px solid transparent;
+  margin-top: var(--menu-top-margin);
+}
+
+nav a.active {
+  color: black;
+  text-decoration: underline;
+}
+nav a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+nav a > i {
+  margin-top: var(--menu-top-margin);
+}
+
+.menu-vertical {
+  margin-left: var(--menu-margin-left);
+}
+
+.banner {
+  background-color: #f4d1b1;
+  height: 200px;
+  margin-bottom: 3em;
+  display: grid;
+}
+
+.banner-head {
+  text-align: center;
+  font-size: 2em;
+  font-weight: normal;
+  color: black;
+}
+
+.deals {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.products {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.vegetables {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  margin: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card-header {
+  height: 100px;
+  width: auto;
+  text-align: center;
+}
+
+.card-content {
+  padding: 2px 16px;
+}
+
+.card-content p {
+  overflow: auto;
+  height: 100px;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.card-actions button {
+  width: 100%;
+  font-size: 1.25rem;
+}
+
+.card-actions button:hover {
+  cursor: pointer;
+}
+
+.card-template,
+.short-card-template {
+  margin: 5px;
+  border: 5px solid grey;
+  background-color: whitesmoke;
+}
+
+.card-template {
+  height: 322px;
+}
+
+.short-card-template {
+  height: 185px;
+}
+
+.discount {
+  color: green;
+  text-decoration: double;
+  font-size: 2em;
+}
+
+.price {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 680px) {
+  .banner {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 200px;
+  }
+  .banner-head {
+    font-size: 1.5em;
+  }
+  .menu-vertical > ul > li {
+    float: left;
+    margin-left: var(--menu-margin-left);
+  }
+  .products {
+    display: flex;
+    flex-direction: column;
+  }
+  .vegetables,
+  .deals {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 460px) {
+  .vegetables,
+  .deals {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
