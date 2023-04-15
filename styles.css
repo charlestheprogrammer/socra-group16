@@ -312,8 +312,8 @@ header > nav {
 
   header {
     width: 90vw;
-    transform: translateX(0);
-    padding: 10px 0;
+    transform: translateX(-5vw);
+    padding: 10px 5vw;
     justify-content: space-between; }
     header > div:first-of-type nav {
       display: none; }

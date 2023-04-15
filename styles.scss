@@ -433,7 +433,7 @@ main {
     display: none;
 }
 
-header >nav {
+header>nav {
     display: none;
 }
 
@@ -445,9 +445,10 @@ header >nav {
 
     header {
         width: 90vw;
-        transform: translateX(0);
-        padding: 10px 0;
+        transform: translateX(-5vw);
+        padding: 10px 5vw;
         justify-content: space-between;
+
         >div:first-of-type {
             nav {
                 display: none;
@@ -501,11 +502,12 @@ header >nav {
 
 @media (max-width: 460px) {
     header {
-        >nav >div {
+        >nav>div {
             padding: 0 10px;
             font-size: 14px;
         }
     }
+
     main {
         .deals {
             flex-direction: column;
@@ -538,6 +540,4 @@ header >nav {
     }
 }
 
-@media (min-width: 1200px) {
-    
-}
+@media (min-width: 1200px) {}
