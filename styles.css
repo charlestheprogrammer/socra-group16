@@ -20,32 +20,32 @@ header {
   padding: 10px 60px;
   background-color: #fff;
   z-index: 999; }
+  header nav {
+    display: flex;
+    align-items: center;
+    background-color: #EEE;
+    border-radius: 24px;
+    height: 48px;
+    padding: 0 4px; }
+    header nav > div {
+      padding: 0 20px;
+      height: 40px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      color: #000;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 400; }
+      header nav > div:hover, header nav > div.active {
+        background-color: #fff; }
   header > div:first-of-type {
     display: flex;
     gap: 40px; }
     header > div:first-of-type img {
       height: 42px; }
-    header > div:first-of-type > nav {
-      display: flex;
-      align-items: center;
-      background-color: #EEE;
-      border-radius: 24px;
-      height: 48px;
-      padding: 0 4px; }
-      header > div:first-of-type > nav > div {
-        padding: 0 20px;
-        height: 40px;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        color: #000;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        font-weight: 400; }
-        header > div:first-of-type > nav > div:hover, header > div:first-of-type > nav > div.active {
-          background-color: #fff; }
   header > p {
     font-size: 16px;
     color: #000;
@@ -72,6 +72,9 @@ header {
     padding: 0 15px;
     font-size: 16px;
     font-weight: 400; }
+    header > div:last-of-type p,
+    header > div:last-of-type span {
+      font-size: 16px; }
     header > div:last-of-type > div i {
       font-size: 18px; }
 
@@ -230,9 +233,11 @@ main .products {
     width: calc(100% - 300px); }
   main .products .products-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px; }
     main .products .products-list .product {
-      flex: 1; }
+      flex: 1;
+      min-width: 200px; }
       main .products .products-list .product .img {
         aspect-ratio: 1.9/1;
         overflow: hidden; }
@@ -284,26 +289,62 @@ main .products {
     width: 25%; }
   main .products .products-left {
     width: 75%; } }
+@media (max-width: 800px) {
+  main .deals {
+    flex-direction: column;
+    align-items: center; }
+    main .deals .card {
+      min-width: unset;
+      max-width: 500px;
+      width: 100%; } }
+.large {
+  display: block; }
+
+.small {
+  display: none; }
+
+header > nav {
+  display: none; }
+
 @media (max-width: 768px) {
   body {
     padding: 0 5%; }
 
   header {
     width: 90vw;
-    transform: translateX(-8vw); }
+    transform: translateX(0);
+    padding: 10px 0;
+    justify-content: space-between; }
+    header > div:first-of-type nav {
+      display: none; }
+    header > nav {
+      display: flex; }
+    header .large {
+      display: none; }
+    header .small {
+      display: block; }
 
   .categoriesSelector {
     display: none; }
 
   main .products {
     flex-direction: column;
+    align-items: center;
     gap: 30px; }
     main .products .filters {
       width: 100%;
-      position: relative; }
+      position: relative;
+      text-align: center; }
     main .products .products-left {
       width: 100%; } }
+@media (max-width: 600px) {
+  header > div:last-of-type span {
+    display: none; } }
 @media (max-width: 460px) {
+  header > nav > div {
+    padding: 0 10px;
+    font-size: 14px; }
+
   main .deals {
     flex-direction: column; }
     main .deals .card {
@@ -317,4 +358,5 @@ main .products {
     main .products .products-left .products-list {
       flex-direction: column; }
       main .products .products-left .products-list .product {
-        width: 100%; } }
+        width: 100%;
+        min-width: unset; } }

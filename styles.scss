@@ -24,6 +24,34 @@ header {
     background-color: #fff;
     z-index: 999;
 
+    nav {
+        display: flex;
+        align-items: center;
+        background-color: #EEE;
+        border-radius: 24px;
+        height: 48px;
+        padding: 0 4px;
+
+        >div {
+            padding: 0 20px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            color: #000;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 400;
+
+            &:hover,
+            &.active {
+                background-color: #fff;
+            }
+        }
+    }
+
     >div:first-of-type {
         img {
             height: 42px;
@@ -31,34 +59,6 @@ header {
 
         display: flex;
         gap: 40px;
-
-        >nav {
-            display: flex;
-            align-items: center;
-            background-color: #EEE;
-            border-radius: 24px;
-            height: 48px;
-            padding: 0 4px;
-
-            >div {
-                padding: 0 20px;
-                height: 40px;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-                color: #000;
-                border-radius: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 16px;
-                font-weight: 400;
-
-                &:hover,
-                &.active {
-                    background-color: #fff;
-                }
-            }
-        }
     }
 
     >p {
@@ -89,6 +89,12 @@ header {
         border-radius: 24px;
         padding: 0 15px;
         font-size: 16px;
+
+        p,
+        span {
+            font-size: 16px;
+        }
+
         font-weight: 400;
 
         >div {
@@ -316,10 +322,12 @@ main {
 
         .products-list {
             display: flex;
+            flex-wrap: wrap;
             gap: 20px;
 
             .product {
                 flex: 1;
+                min-width: 200px;
 
                 .img {
                     aspect-ratio: 1.9/1;
@@ -402,6 +410,34 @@ main {
     }
 }
 
+@media (max-width: 800px) {
+    main {
+        .deals {
+            flex-direction: column;
+            align-items: center;
+
+            .card {
+                min-width: unset;
+                max-width: 500px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.large {
+    display: block;
+}
+
+.small {
+    display: none;
+}
+
+header >nav {
+    display: none;
+}
+
+
 @media (max-width: 768px) {
     body {
         padding: 0 5%;
@@ -409,7 +445,26 @@ main {
 
     header {
         width: 90vw;
-        transform: translateX(-8vw);
+        transform: translateX(0);
+        padding: 10px 0;
+        justify-content: space-between;
+        >div:first-of-type {
+            nav {
+                display: none;
+            }
+        }
+
+        >nav {
+            display: flex;
+        }
+
+        .large {
+            display: none;
+        }
+
+        .small {
+            display: block;
+        }
     }
 
     .categoriesSelector {
@@ -417,13 +472,16 @@ main {
     }
 
     main {
+
         .products {
             flex-direction: column;
+            align-items: center;
             gap: 30px;
 
             .filters {
                 width: 100%;
                 position: relative;
+                text-align: center;
             }
 
             .products-left {
@@ -433,16 +491,32 @@ main {
     }
 }
 
+@media (max-width: 600px) {
+    header>div:last-of-type {
+        span {
+            display: none;
+        }
+    }
+}
+
 @media (max-width: 460px) {
+    header {
+        >nav >div {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+    }
     main {
         .deals {
             flex-direction: column;
+
             .card {
                 max-width: unset;
                 min-width: unset;
                 width: 100%;
             }
         }
+
         .products {
             .filters {
                 display: none;
@@ -456,9 +530,14 @@ main {
 
                     .product {
                         width: 100%;
+                        min-width: unset;
                     }
                 }
             }
         }
     }
+}
+
+@media (min-width: 1200px) {
+    
 }
