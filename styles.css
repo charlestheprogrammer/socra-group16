@@ -169,9 +169,12 @@ main .deals {
         font-weight: 600;
         line-height: 35px;
         margin-bottom: 10px; }
+        @media screen and (min-width: 1600px) {
+          main .deals .card .card-content h4 {
+            font-size: 25px; } }
         @media screen and (max-width: 1150px) {
           main .deals .card .card-content h4 {
-            font-size: 30px; } }
+            font-size: 28px; } }
         main .deals .card .card-content h4 span {
           font-weight: 700;
           font-size: 110%; }
@@ -237,6 +240,7 @@ main .products {
     gap: 20px; }
     main .products .products-list .product {
       flex: 1;
+      flex-basis: 30%;
       min-width: 200px; }
       main .products .products-list .product .img {
         aspect-ratio: 1.9/1;
@@ -306,6 +310,16 @@ main .products {
 header > nav {
   display: none; }
 
+@media (min-width: 1600px) {
+  body {
+    padding: 0 calc((100vw - 1420px) / 2); }
+
+  header {
+    width: calc((1420px));
+    transform: translateX(calc((1420px - 100vw) / 2));
+    left: 0;
+    top: 0;
+    padding: 10px calc((100vw - 1420px) / 2); } }
 @media (max-width: 768px) {
   body {
     padding: 0 5%; }
