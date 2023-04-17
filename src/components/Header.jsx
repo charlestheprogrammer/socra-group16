@@ -1,12 +1,18 @@
 import React from "react";
 import "../styles/Header.scss";
-import { Link, useMatch } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Header() {
-  const productActive = useMatch("/") || useMatch("/product/*");
-  const commandActive = useMatch("/commands");
-  const cartActive = useMatch("/basket");
+  const [productActive, setProductActive] = React.useState(false);
+  const [commandActive, setCommandActive] = React.useState(false);
+  const [cartActive, setCartActive] = React.useState(false);
+  const location = useLocation();
+  React.useEffect(() => {
+    setProductActive(location.pathname === "/" || location.pathname.startsWith("/product"));
+    setCommandActive(location.pathname.startsWith("/commands"));
+    setCartActive(location.pathname.startsWith("/basket"));
+  }, [location.pathname])
   const basketItems = useSelector((state) => state.nbOfItems);
   return (
     <header socra="main-navigation">
@@ -15,17 +21,21 @@ export default function Header() {
         <img src="/favicon.ico" alt="" className="small" />
         <nav>
           <Link to={"/product"}>
-            <div className={productActive && "active"}>Produits</div>
+            <div className={(productActive && "active") || ""}>Produits</div>
           </Link>
           <Link to={"/commands"}>
-            <div className={commandActive && "active"}>Commandes</div>
+            <div className={(commandActive && "active") || ""}>Commandes</div>
           </Link>
         </nav>
       </div>
       <p>Des produits frais de votre voisinage</p>
       <nav>
-        <div className="active">Produits</div>
-        <div>Commandes</div>
+        <Link to={"/product"}>
+          <div className={(productActive && "active") || ""}>Produits</div>
+        </Link>
+        <Link to={"/commands"}>
+          <div className={(commandActive && "active") || ""}>Commandes</div>
+        </Link>
       </nav>
       <div>
         <Link to={"/basket"}>

@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Layout />
       <Routes>
-        <Route exact path="/" element={<Navigate to="/product" replace />} />
+        <Route path="/" element={<Navigate replace to="/product" />} />
         <Route path="/product/:productName?" element={<Product />} />
         <Route path="/commands" element={<Commands />} />
         <Route path="/basket" element={<Basket />} />
