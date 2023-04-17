@@ -39,7 +39,7 @@ export default function Deal({ id, name, price, promotionPrice, image, unit }) {
               dispatch(
                 addItem({
                   name,
-                  price,
+                  price: promotionPrice,
                   quantity: 1,
                   id,
                 })
