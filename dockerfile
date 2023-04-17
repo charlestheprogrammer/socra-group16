@@ -1,5 +1,2 @@
 FROM nginx:1.22.1
-COPY index.html /usr/share/nginx/html/index.html
-COPY styles.css /usr/share/nginx/html/styles.css
-COPY images /usr/share/nginx/html/images
-COPY public /usr/share/nginx/html/public
+RUN echo "<html><head><title>Correction SOCRA group16</title></head><body><h1>Well done!</h1></body></html>" > /usr/share/nginx/html/index.html
