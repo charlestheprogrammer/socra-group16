@@ -9,10 +9,12 @@ export default function Header() {
   const [cartActive, setCartActive] = React.useState(false);
   const location = useLocation();
   React.useEffect(() => {
-    setProductActive(location.pathname === "/" || location.pathname.startsWith("/product"));
+    setProductActive(
+      location.pathname === "/" || location.pathname.startsWith("/product")
+    );
     setCommandActive(location.pathname.startsWith("/commands"));
     setCartActive(location.pathname.startsWith("/basket"));
-  }, [location.pathname])
+  }, [location.pathname]);
   const basketItems = useSelector((state) => state.nbOfItems);
   return (
     <header socra="main-navigation">
