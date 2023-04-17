@@ -1,14 +1,10 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addItem } from "../reducers/store";
-import { useDispatch, useSelector } from "react-redux";
 import Deal from "../components/Deal";
 
 export default function Product() {
   const navigate = useNavigate();
   const { productName } = useParams();
-  const dispatch = useDispatch();
-  const mapOfItems = useSelector((state) => state.mapOfExistingItems);
   return (
     <main>
       <section>
