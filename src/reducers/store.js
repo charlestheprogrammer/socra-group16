@@ -1,10 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import basketSlice from "./basket";
 
 export const { addItem, removeItem, clear } = basketSlice.actions;
 
+const rootReducer = combineReducers({
+  basket: basketSlice.reducer,
+});
+
 const store = configureStore({
-  reducer: basketSlice.reducer,
+  reducer: rootReducer,
 });
 
 export default store;

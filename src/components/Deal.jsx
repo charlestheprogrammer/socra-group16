@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../reducers/store";
+import "../styles/Deal.scss";
 
 export default function Deal({ id, name, price, promotionPrice, image, unit }) {
-  const mapOfItems = useSelector((state) => state.mapOfExistingItems);
+  const mapOfItems = useSelector((state) => state.basket.mapOfExistingItems);
   const dispatch = useDispatch();
   const title =
     id % 2 ? (
@@ -21,6 +22,9 @@ export default function Deal({ id, name, price, promotionPrice, image, unit }) {
     );
   return (
     <div className="card">
+      <div className="card-price">
+        {(promotionPrice - price).toFixed(2).replace(".", ",")}€
+      </div>
       <div className="card-header">
         <img src={image} alt={name} />
       </div>
@@ -29,8 +33,11 @@ export default function Deal({ id, name, price, promotionPrice, image, unit }) {
         <div className="card-footer">
           <span>
             {" "}
-            <s>{price}€</s>
-            <span className="discount">{promotionPrice}€</span>/{unit}
+            <s>{price.toString().replace(".", ",")}€</s>
+            <span className="discount">
+              {promotionPrice.toString().replace(".", ",")}€
+            </span>
+            /{unit}
           </span>
         </div>
         <div className="card-actions">
@@ -42,6 +49,7 @@ export default function Deal({ id, name, price, promotionPrice, image, unit }) {
                   price: promotionPrice,
                   quantity: 1,
                   id,
+                  img: image,
                 })
               )
             }

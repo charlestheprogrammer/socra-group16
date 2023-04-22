@@ -15,7 +15,7 @@ export default function Header() {
     setCommandActive(location.pathname.startsWith("/commands"));
     setCartActive(location.pathname.startsWith("/basket"));
   }, [location.pathname]);
-  const basketItems = useSelector((state) => state.nbOfItems);
+  const basketItems = useSelector((state) => state.basket.nbOfItems);
   return (
     <header socra="main-navigation">
       <div>
