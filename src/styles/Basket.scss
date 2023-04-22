@@ -1,0 +1,31 @@
+.basket {
+    .basket_items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        > div {
+            flex-basis: calc(33.333% - 20px);
+            .img {
+                width: 100%;
+                aspect-ratio: 1.9/1;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }   
+            }
+
+            p {
+                margin: 0;
+                font-size: 1.05rem;
+                font-weight: 500;
+                color: #888;
+            }
+
+            h2 {
+                margin-bottom: -7px;
+            }
+        }
+    }
+}
