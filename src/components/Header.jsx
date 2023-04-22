@@ -19,8 +19,10 @@ export default function Header() {
   return (
     <header socra="main-navigation">
       <div>
-        <img src="/images/socarotte.png" alt="" className="large" />
-        <img src="/favicon.ico" alt="" className="small" />
+        <Link to={"/"}>
+          <img src="/images/socarotte.png" alt="" className="large" />
+          <img src="/favicon.ico" alt="" className="small" />
+        </Link>
         <nav>
           <Link to={"/product"}>
             <div className={(productActive && "active") || ""}>Produits</div>
