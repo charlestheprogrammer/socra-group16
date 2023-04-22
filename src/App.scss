@@ -269,14 +269,15 @@ main {
 }
 
 @media (min-width: 1600px) {
-    body {
-        padding: 0 calc((100vw - 1420px) / 2);
+    #root {
+        width: 1420px;
     }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 0 5%;
+
+    #root {
+        width: 90vw;
     }
 
     .categoriesSelector {
