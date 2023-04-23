@@ -19,22 +19,29 @@ header {
         height: 48px;
         padding: 0 4px;
 
-        >a>div {
-            padding: 0 20px;
-            height: 40px;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            color: #000;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 400;
-
-            &:hover,
+        >a {
             &.active {
-                background-color: #fff;
+                >div {
+                    background-color: #fff;
+                }
+            }
+
+            >div {
+                padding: 0 20px;
+                height: 40px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                color: #000;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                font-weight: 400;
+
+                &:hover {
+                    background-color: #fff;
+                }
             }
         }
 

@@ -53,6 +53,7 @@ export default function Deal({ id, name, price, promotionPrice, image, unit }) {
                 })
               )
             }
+            socra="add-to-basket"
             className={mapOfItems[id] && "disabled"}
           >
             {mapOfItems[id] ? "Déjà" : "Ajouter"} au panier{" "}

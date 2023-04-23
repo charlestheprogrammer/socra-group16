@@ -224,7 +224,7 @@ main {
                         }
                     }
 
-                    &.disabled {
+                    &:disabled {
                         background-color: #fff;
                         border: 2px solid #000;
                         color: #000;

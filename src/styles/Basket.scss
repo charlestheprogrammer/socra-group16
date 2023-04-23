@@ -2,29 +2,182 @@
     .basket_items {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 40px;
 
-        > div {
-            flex-basis: calc(33.333% - 20px);
-            .img {
-                width: 100%;
-                aspect-ratio: 1.9/1;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }   
+        >.basket_item {
+            width: calc(50% - 20px);
+            max-width: 100%;
+            min-width: 300px;
+            border-bottom: 1px solid #ededed;
+
+            >.top {
+                display: flex;
+                justify-content: space-between;
+
+                .img {
+                    width: 15%;
+                    aspect-ratio: 1/1;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                h2 {
+                    margin-bottom: -7px;
+                    font-weight: 500;
+                    font-size: 1.4rem;
+                }
+
+                p {
+                    span {
+                        font-weight: 500;
+                    }
+
+                    font-weight: 400;
+                    font-size: .95rem;
+                    color: #666;
+                }
             }
 
-            p {
-                margin: 0;
-                font-size: 1.05rem;
-                font-weight: 500;
-                color: #888;
+            >.bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: .6rem 0;
+
+                button {
+                    border: 2px solid transparent;
+                    padding: 4px;
+                    border-radius: 5px;
+                    background-color: transparent;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+
+                    &:hover {
+                        border: 2px solid #000;
+                    }
+
+                    i {
+                        color: rgb(189, 50, 50);
+                        font-size: 1.2rem;
+                    }
+                }
+
+                p {
+                    margin: 0;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: #191919;
+                }
+            }
+        }
+
+        table {
+            border-spacing: 0 15px;
+            width: 100%;
+
+            thead {
+                tr {
+                    th {
+                        padding-bottom: 15px;
+                        border-bottom: 2px solid #ededed;
+                        font-weight: 600;
+                        color: #b0b0b0;
+                        text-transform: uppercase;
+                    }
+
+                    th:nth-child(1) {
+                        width: 60%;
+                        text-align: left;
+                    }
+
+                    th:nth-child(2) {
+                        width: 25%;
+                    }
+
+                    th:nth-child(3) {
+                        width: 15%;
+                        text-align: right;
+                    }
+                }
             }
 
-            h2 {
-                margin-bottom: -7px;
+            tbody {
+                tr {
+                    td {
+                        padding-bottom: 15px;
+                        border-bottom: 2px solid #ededed;
+                    }
+
+                    td:nth-child(1) {
+                        display: flex;
+                        gap: 15px;
+                        width: 100%;
+
+                        .img {
+                            width: 15%;
+                            aspect-ratio: 1/1;
+                            border-radius: 15px;
+                            overflow: hidden;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        h2 {
+                            font-weight: 600;
+
+                            p {
+                                font-weight: 400;
+                                font-size: 0.9rem;
+                                color: #666;
+                            }
+                        }
+                    }
+
+                    td:nth-child(2) {
+                        text-align: center;
+                        width: 25%;
+
+                        p {
+                            text-align: center;
+                            margin-bottom: 5px;
+                        }
+
+                        button {
+                            border: 2px solid transparent;
+                            border-radius: 5px;
+                            background-color: transparent;
+                            cursor: pointer;
+                            transition: all 0.2s ease-in-out;
+                            width: max-content;
+                            padding: 4px 8px;
+                            font-weight: 500;
+                            font-family: "Poppins", sans-serif;
+
+                            &:hover {
+                                border: 2px solid #000;
+                            }
+                        }
+                    }
+
+                    td:nth-child(3) {
+                        text-align: right;
+                        width: 20%;
+
+                        p {
+                            text-align: right;
+                            font-weight: 500;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
             }
         }
     }

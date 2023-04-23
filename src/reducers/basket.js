@@ -20,7 +20,7 @@ const basketSlice = createSlice({
       if (!state.mapOfExistingItems[action.payload.id]) {
         return;
       }
-      (mapOfExistingItems[action.payload.id] = false),
+      (state.mapOfExistingItems[action.payload.id] = false),
         (state.nbOfItems -= 1),
         (state.items = state.items.filter(
           (item) => item.id !== action.payload.id

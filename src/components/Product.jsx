@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../reducers/store";
+import AddToBasket from "./AddToBasket";
 
 export default function Product({
   img,
@@ -26,23 +27,9 @@ export default function Product({
       <p>
         {description} • {distance}
       </p>
-      <button
-        onClick={() =>
-          dispatch(
-            addItem({
-              name,
-              price,
-              quantity: 1,
-              id,
-              img,
-            })
-          )
-        }
-        className={mapOfItems[id] && "disabled"}
-      >
-        {mapOfItems[id] ? "Déjà" : "Ajouter"} au panier{" "}
-        <img src="/images/arrow_white.svg" alt="" />
-      </button>
+      <AddToBasket
+        item={{ name, price, id, img, quantity: 1, unit, description }}
+      />
     </div>
   );
 }
