@@ -30,7 +30,7 @@ jobs:
           TAG: ${{ github.sha }}
         run: |
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USER }} --password-stdin
-          docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG .
+          docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG ./frontend
           docker push ghcr.io/csimonmeunier/socra-group16/socarotte-frontend:$TAG
 
       - name: Deploy on production VM
