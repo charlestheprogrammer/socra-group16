@@ -133,6 +133,11 @@ main {
 
         .products-left {
             width: calc(100% - 300px);
+
+            h4 {
+                font-weight: 500;
+                font-size: 18px;
+            }
         }
 
         .products-list {
@@ -189,13 +194,40 @@ main {
                     font-weight: 500;
                     color: #000;
                     margin-bottom: -8px;
+                    line-height: 25px;
+                    height: 55px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-line-clamp: 2;
+                    line-clamp: 2;
+                    -webkit-box-orient: vertical;
                 }
 
-                p {
+                >p {
                     color: #9E9E9E;
                     font-size: 13px;
                     font-weight: 300;
                     margin-bottom: 15px;
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    display: flex;
+
+                    p:nth-child(1) {
+                        max-width: 75%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        margin-right: 3px;
+                    }
+
+                    p:nth-child(2) {
+                        max-width: 35%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
                 }
 
                 button {

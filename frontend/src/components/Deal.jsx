@@ -37,7 +37,7 @@ export default function Deal({ id, name, price, promotionPrice, image, unit }) {
             <span className="discount">
               {promotionPrice.toString().replace(".", ",")}€
             </span>
-            /{unit}
+            /{unit ?? "kg"}
           </span>
         </div>
         <div className="card-actions">

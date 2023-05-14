@@ -4,8 +4,13 @@ import Deal from "../components/Deal";
 import ProductCategory from "../components/ProductCategory";
 import ProductsFilters from "../components/ProductsFilters";
 import BestProducts from "../components/BestProducts";
+import { useGeoLocation } from "../useGeoLocation";
+import { useDispatch } from "react-redux";
+import { setItems } from "../reducers/store";
+import { API_URL } from "../constant";
 
 export default function Products() {
+  const dispatch = useDispatch();
   const { pathname, hash, key } = useLocation();
   React.useEffect(() => {
     if (hash !== "") {
@@ -18,6 +23,30 @@ export default function Products() {
       }, 0);
     }
   }, [pathname, hash, key]);
+
+  const { latitude, longitude, loading, error } = useGeoLocation();
+  React.useEffect(
+    function () {
+      async function fetchGardens() {
+        const userPosition = { position: { lat: latitude, lng: longitude } };
+        const url = `${API_URL}/v1/product?radius=15`;
+        const response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify(userPosition),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        dispatch(setItems(data));
+      }
+      if (!loading) {
+        fetchGardens();
+      }
+    },
+    [loading]
+  );
+
   return (
     <main>
       <section>

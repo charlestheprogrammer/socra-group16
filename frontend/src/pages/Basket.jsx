@@ -34,7 +34,7 @@ export default function Basket() {
                     </td>
                     <td>
                       <p>
-                        {item.quantity} {item.unit}
+                        {item.quantity} {item.unit ?? "kg"}
                       </p>
                       <button
                         socra="remove-item"

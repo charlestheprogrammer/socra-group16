@@ -13,7 +13,7 @@ export default function BestProducts() {
           unit="kg"
           id={40}
           description="Cultivées par Lucas B."
-          distance="5,9km"
+          distance="5,9"
         />
         <Product
           name="Artichauds"
@@ -22,7 +22,7 @@ export default function BestProducts() {
           unit="pièce"
           id={41}
           description="Cultivées par Nathan A."
-          distance="583,1km"
+          distance="583,1"
         />
         <Product
           name="Betteraves"
@@ -31,7 +31,7 @@ export default function BestProducts() {
           unit="kg"
           id={42}
           description="Cultivées par Romain P."
-          distance="187,2km"
+          distance="187,2"
         />
         <Product
           name="Radis"
@@ -40,7 +40,7 @@ export default function BestProducts() {
           unit="kg"
           id={43}
           description="Cultivés par Alexandre M."
-          distance="7,6km"
+          distance="7,6"
         />
         <Product
           name="Tomates"
@@ -49,7 +49,7 @@ export default function BestProducts() {
           unit="kg"
           id={44}
           description="Cultivées par Antoine R."
-          distance="2,4km"
+          distance="2,4"
         />
         <Product
           name="Œufs de poules"
@@ -58,7 +58,7 @@ export default function BestProducts() {
           unit="pièce"
           id={45}
           description="Cultivées par Alexandre A."
-          distance="12,8km"
+          distance="12,8"
         />
         <Product
           name="Pommes"
@@ -67,7 +67,7 @@ export default function BestProducts() {
           unit="kg"
           id={46}
           description="Cultivées par Julien R."
-          distance="34,1km"
+          distance="34,1"
         />
         <Product
           name="Ramboutans"
@@ -76,7 +76,7 @@ export default function BestProducts() {
           unit="kg"
           id={47}
           description="Cultivées par Kevan C."
-          distance="6 752,6km"
+          distance="6 752,6"
         />
         <Product
           name="Vanille"
@@ -85,7 +85,7 @@ export default function BestProducts() {
           unit="gousse"
           id={48}
           description="Cultivées par Ajanra R."
-          distance="8 702,2km"
+          distance="8 702,2"
         />
       </div>
     </div>
