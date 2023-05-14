@@ -18,6 +18,7 @@ function AddToBasket({ item }) {
           })
         );
       }}
+      socra="add-to-basket"
     >
       {alreadyAdded ? "Déjà" : "Ajouter"} au panier
       <img src="/images/arrow_white.svg" alt="" />
