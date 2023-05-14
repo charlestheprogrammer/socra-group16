@@ -53,6 +53,7 @@ app.post("/v1/product", function (request, response) {
       gardensResult.push(gardens[i]);
     }
   }
+
   response.send({
     inputRadius: radius,
     inputPosition: inputPostion,
