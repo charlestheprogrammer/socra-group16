@@ -23,7 +23,7 @@ jobs:
         working-directory: backend
         run: | 
           docker build -t ghcr.io/csimonmeunier/socra-group16/socarotte-backend:${{ github.sha }} .
-          docker login ghcr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USER }} --password-stdin
           docker push ghcr.io/csimonmeunier/socra-group16/socarotte-backend:${{ github.sha }}
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.1.9
@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker login ghcr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USER }} --password-stdin
             docker stop socarotte-backend 2> /dev/null && docker rm socarotte-backend 2> /dev/null
             docker run -d --network web \
               --name socarotte-backend \
@@ -54,7 +54,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker login ghcr.io -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKER_USER }} --password-stdin
             docker stop socarotte-backend 2> /dev/null && docker rm socarotte-backend 2> /dev/null
             docker run -d --network web \
               --name socarotte-backend \
